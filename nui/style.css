@@ -1,0 +1,87 @@
+body {
+    display: flex;
+    user-select: none;
+}
+
+.box {
+    font-weight: bold;
+    font-family: sans-serif;
+    width: 400px;
+    height: 300px;
+    top: 300px;
+    border-radius: 10px;
+    background: rgb(243, 243, 243);
+    /* color: white; */
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin: auto;
+}
+
+img {
+    position: absolute;
+    top: 4px;
+    left: 85px;
+    width: 32px;
+    height: 32px;
+}
+
+.title {
+    position: relative;
+    left: 18px;
+    top: 8px;
+    font-size: 20px;
+    color: #000000;
+}
+
+#linevertic2 {
+    position: relative;
+    width: 230px;
+    border: 0.1px solid rgba(0, 0, 0, 0.5);
+    top: 5px;
+    /* right: 75px; */
+}
+
+.desc {
+    position: relative;
+    width: 350px;
+    height: 75px;
+    top: 10px;
+}
+
+#linevertic {
+    position: relative;
+    width: 350px;
+    border: 0.1px solid rgba(0, 0, 0, 0.5);
+    top: 10px
+}
+
+#buttons {
+    position: relative;
+    border-color: rgba(255, 255, 255, 0);
+    border-radius: 5px;
+    width: 200px;
+    height: 40px;
+    margin: 10px 0 0 0;
+    font-size: 30px;
+    top: 30px;
+}
+
+.botao {
+    background: rgb(83, 255, 112);
+}
+
+.botao:hover {
+    transition-duration: 1s;
+    background: rgb(82, 255, 14);
+}
+
+.botao2 {
+    background: rgb(255, 83, 83);
+}
+
+.botao2:hover {
+    transition-duration: 1s;
+    background: rgb(255, 14, 14);
+}
