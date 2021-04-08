@@ -1,18 +1,18 @@
 fx_version "bodacious"
 game "gta5"
 
-ui_page "nui/index.html"
+ui_page "web/index.html"
 
 client_script {
     '@vrp/lib/utils.lua',
-    "cl.lua"
+    "client/*"
 }
 
 server_script {
     '@vrp/lib/utils.lua',
-    "sv.lua"
+    "server/*"
 }
 
 files {
-	"nui/*"
+	"web/*"
 }

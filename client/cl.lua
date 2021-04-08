@@ -8,14 +8,15 @@ emP = Tunnel.getInterface("vrp_job")
 
 --[ VARIABLES ]---------------------------------------------------------------------------------------------------------------------------
 
+local selecionado = 1
 local servico = false
 local onNui = false
 local toggle = {
-    {['x'] = 453.97, ['y'] = -600.69, ['z'] = 28.59}
+    { 453.63, -600.62, 28.6 }
 }
 local locs = {
-	[1] = { ['x'] = 307.17, ['y'] = -764.79, ['z'] = 29.2 },
-	[2] = { ['x'] = 411.22, ['y'] = -768.25, ['z'] = 29.14 }
+	[1] = { 448.59, -587.93, 28.5 },
+	[2] = { 441.57, -574.49, 28.5 }
 }
 
 --[ FUNCTION ]---------------------------------------------------------------------------------------------------------------------------
@@ -23,15 +24,14 @@ local locs = {
 function ToogleActionNui()
     onNui = not onNui
     if onNui then
-        -- DoScreenFadeOut(100) -- Deixa a tela preta
         SetNuiFocus(true, true)
         SendNUIMessage({
-            mostre = true
+            action = "show"
         })
     else
         SetNuiFocus(false)
         SendNUIMessage({
-            mostre = false
+            action = "hide"
         })
     end
 end
@@ -62,13 +62,12 @@ Citizen.CreateThread(function()
         local idle = 1000
         for k,v in pairs(toggle) do
             local ped = PlayerPedId()
-            local x,y,z = table.unpack(GetEntityCoords(ped))
-            local bowz,cdz = GetGroundZFor_3dCoord(v.x,v.y,v.z)
-            local distance = GetDistanceBetweenCoords(v.x,v.y,cdz,x,y,z,true)
+            local coords = GetEntityCoords(ped)
+            local distance = #(coords - vector3(v[1],v[2],v[3]))
             local toggle = toggle[k]
             
             if distance <= 3.0 then
-                DrawText3D(toggle.x,toggle.y,toggle.z,"~w~Pressione ~r~[E] ~w~para abrir")
+                DrawText3D(toggle[1],toggle[2],toggle[3],"~w~Pressione ~r~[E] ~w~para abrir")
                 idle = 5
                 if distance <= 1.2 and IsControlJustPressed(0,38) then
                     ToogleActionNui()
@@ -87,12 +86,10 @@ function rota()
             local idle = 1000
             if servico then
                 local ped = PlayerPedId()
-                local x,y,z = table.unpack(GetEntityCoords(ped))
-                local bowz,cdz = GetGroundZFor_3dCoord(locs[selecionado].x,locs[selecionado].y,locs[selecionado].z)
-                local distance = GetDistanceBetweenCoords(locs[selecionado].x,locs[selecionado].y,cdz,x,y,z,true)
-
+                local coords = GetEntityCoords(ped)
+                local distance = #(coords - vector3(locs[selecionado][1],locs[selecionado][2],locs[selecionado][3]))
                 if distance <= 10.0 then
-                    DrawMarker(21,locs[selecionado].x,locs[selecionado].y,locs[selecionado].z+0.20,0,0,0,0,180.0,130.0,2.0,2.0,1.0,247,217,99,100,1,0,0,1)
+                    DrawMarker(21,locs[selecionado][1],locs[selecionado][2],locs[selecionado][3]+0.20,0,0,0,0,180.0,130.0,2.0,2.0,1.0,247,217,99,100,1,0,0,1)
                     idle = 5
                     if distance <= 2.5 and IsControlJustPressed(0,38) then
                         if IsVehicleModel(GetVehiclePedIsUsing(ped),GetHashKey("bus")) or IsVehicleModel(GetVehiclePedIsUsing(ped),GetHashKey("coach")) then
@@ -135,13 +132,21 @@ function DrawText3D(x,y,z, text)
 end
 
 function CriandoBlip(locs,selecionado)
-	blips = AddBlipForCoord(locs[selecionado].x,locs[selecionado].y,locs[selecionado].z)
+	blips = AddBlipForCoord(locs[selecionado][1],locs[selecionado][2],locs[selecionado][3])
 	SetBlipSprite(blips,1)
 	SetBlipColour(blips,5)
 	SetBlipScale(blips,0.4)
 	SetBlipAsShortRange(blips,false)
 	SetBlipRoute(blips,true)
 	BeginTextCommandSetBlipName("STRING")
-	AddTextComponentString("Entrega de Encomenda")
+	AddTextComponentString("Pontos de ônibus")
 	EndTextCommandSetBlipName(blips)
 end
+
+--[ OTHERS ]-----------------------------------------------------------------------------------------------------------------------------
+
+AddEventHandler('onResourceStop', function(resource)
+    if resource == GetCurrentResourceName() then
+        SetNuiFocus(false, false)
+    end
+end)

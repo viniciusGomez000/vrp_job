@@ -1,0 +1,109 @@
+/* 
+    UPDATE 0.0.2v
+    MOFIED VALUES FOR MAKE THE NUI
+    RESPONSIVE.
+*/
+
+*{
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+body {
+    display: none;
+    user-select: none;
+}
+
+.box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 20vw;
+    height: 32vh; 
+    border-radius: 1vmax;
+    background: #f3f3f3;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+img {
+    position: absolute;
+    top: 4px;
+    left: 85px;
+    width: 32px;
+    height: 32px;
+}
+
+.title {
+    position: relative;
+    top: 10%;
+    font-size: 1vmax;
+    display: flex;
+    justify-content: center;
+    color: #000000;
+    min-width: 50%;
+    height: 10%;
+    border-bottom: 0.2vmax solid black;
+}
+
+
+
+
+/* MIDDLE */
+
+.desc {
+    position: absolute;
+    top: 25%;
+    width: 17vw;
+    height: 8.5vh;
+    padding-bottom: 0.5vmax;
+    text-align: center;
+    font-size: 0.85vmax;
+    border-bottom: 0.2vmax solid black;
+}
+
+/* BOTTOM */
+#buttons{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    height: 30%;
+    width: 100%;
+}
+
+.box button {
+    position: relative;
+    top: 10%;
+    margin-top: 2%;
+    border: none;
+    width: 45%;
+    height: 5vh;
+    font-size: 1vmax;
+    margin-left: 1%;
+    margin-right: 1%;
+
+    color: rgba(255, 255, 255);
+    border-radius: 10px;
+}
+
+.botao {
+    background: rgb(86, 211, 106);
+}
+
+.botao:hover {
+    background: rgb(82, 255, 14);
+    transition: 500ms;
+}
+
+.botao2 {
+    background: rgb(255, 83, 83);
+}
+
+.botao2:hover {
+    background: rgb(255, 14, 14);
+    transition: 500ms;
+}
