@@ -12,11 +12,11 @@ local selecionado = 1
 local servico = false
 local onNui = false
 local toggle = {
-    { 453.63, -600.62, 28.6 }
+	vec3(453.63, -600.62, 28.6),
 }
 local locs = {
-	[1] = { 448.59, -587.93, 28.5 },
-	[2] = { 441.57, -574.49, 28.5 }
+	[1] = vec3(448.59, -587.93, 28.5),
+	[2] = vec3(441.57, -574.49, 28.5 ),
 }
 
 --[ FUNCTION ]---------------------------------------------------------------------------------------------------------------------------
@@ -60,15 +60,13 @@ Citizen.CreateThread(function()
     SetNuiFocus(false, false)
     while true do
         local idle = 1000
+        local coords = GetEntityCoords(PlayerPedId())	
         for k,v in pairs(toggle) do
-            local ped = PlayerPedId()
-            local coords = GetEntityCoords(ped)
-            local distance = #(coords - vector3(v[1],v[2],v[3]))
-            local toggle = toggle[k]
-            
+            local distance = #(coords - v)
+          
             if distance <= 3.0 then
-                DrawText3D(toggle[1],toggle[2],toggle[3],"~w~Pressione ~r~[E] ~w~para abrir")
-                idle = 5
+		idle = 5
+                DrawText3D(v.x,v.y,v.z,"~w~Pressione ~r~[E] ~w~para abrir")
                 if distance <= 1.2 and IsControlJustPressed(0,38) then
                     ToogleActionNui()
                 end
@@ -87,9 +85,9 @@ function rota()
             if servico then
                 local ped = PlayerPedId()
                 local coords = GetEntityCoords(ped)
-                local distance = #(coords - vector3(locs[selecionado][1],locs[selecionado][2],locs[selecionado][3]))
+                local distance = #(coords - locs[selecionado])
                 if distance <= 10.0 then
-                    DrawMarker(21,locs[selecionado][1],locs[selecionado][2],locs[selecionado][3]+0.20,0,0,0,0,180.0,130.0,2.0,2.0,1.0,247,217,99,100,1,0,0,1)
+                    DrawMarker(21,locs[selecionado].x,locs[selecionado].y,locs[selecionado].z+0.20,0,0,0,0,180.0,130.0,2.0,2.0,1.0,247,217,99,100,1,0,0,1)
                     idle = 5
                     if distance <= 2.5 and IsControlJustPressed(0,38) then
                         if IsVehicleModel(GetVehiclePedIsUsing(ped),GetHashKey("bus")) or IsVehicleModel(GetVehiclePedIsUsing(ped),GetHashKey("coach")) then
@@ -132,7 +130,7 @@ function DrawText3D(x,y,z, text)
 end
 
 function CriandoBlip(locs,selecionado)
-	blips = AddBlipForCoord(locs[selecionado][1],locs[selecionado][2],locs[selecionado][3])
+	blips = AddBlipForCoord(locs[selecionado].x,locs[selecionado].y,locs[selecionado].z)
 	SetBlipSprite(blips,1)
 	SetBlipColour(blips,5)
 	SetBlipScale(blips,0.4)
@@ -144,9 +142,6 @@ function CriandoBlip(locs,selecionado)
 end
 
 --[ OTHERS ]-----------------------------------------------------------------------------------------------------------------------------
-
-AddEventHandler('onResourceStop', function(resource)
-    if resource == GetCurrentResourceName() then
-        SetNuiFocus(false, false)
-    end
+CreateThread(function()
+	SetNuiFocus(false, false)
 end)
