@@ -9,7 +9,7 @@
 # Créditos
 
 ```
-   - Vinicius Gomez
+   * Vinicius Gomez
    - Shawty
    - Muamba
    - Guimilreu
