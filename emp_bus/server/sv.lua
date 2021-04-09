@@ -5,7 +5,7 @@ vRP = Proxy.getInterface("vRP")
 vRPclient = Tunnel.getInterface("vRP")
 
 emP = {}
-Tunnel.bindInterface("vrp_job",emP)
+Tunnel.bindInterface("emp_bus",emP)
 
 --[ Pay ]-----------------------------------------------------------------------------------------------------------------------------
 

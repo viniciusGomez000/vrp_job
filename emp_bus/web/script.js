@@ -23,13 +23,13 @@ $(document).ready(function() {
 
 
     $(".botao").click(function(){
-        $.post("http://vrp_job/botao")
+        $.post("http://emp_bus/botao")
         $(".botao").fadeOut(300);
         $(".botao2").fadeIn(300);
     })
 
     $(".botao2").click(function(){
-        $.post("http://vrp_job/botao2")
+        $.post("http://emp_bus/botao2")
         $(".botao2").fadeOut(300);
         $(".botao").fadeIn(300);
     })
