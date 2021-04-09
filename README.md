@@ -1,35 +1,37 @@
 # vrp_job
 
-`
+```
    Plataforma: FiveM
-`
-`
    Framework: vRPeX
-`
-`
    Data de início do projeto: 08/04/21
-`
+```
  
-# créditos
+# Créditos
 
-`
-   Vinicius Gomez
-`
-`
-   Shawty
-`
-`
-   Muamba
-`
-`
-   guimilreu
-`
-`
-   nyo
-`
+```
+   - Vinicius Gomez
+   - Shawty
+   - Muamba
+   - Guimilreu
+   - Nyo
+   - Guit
+```
 
-# Motorista de ônibus
+# Empregos
 
-`
-   Script de "Motorista de ônibus" com nui, Otimizado, simples e facil a configuração do mesmo =D
-`
+```
+   - emp_bus:
+   Emprego de ônibus com NUI, 100% otimizado, facil a configuração.
+```
+# Instalação
+
+```
+   - Jogar dentro da pasta ./resource
+   - Startar o emprego no server.cfg
+```
+
+# Bugs
+
+```
+   - Me chama no privado: Defalt#7030
+```

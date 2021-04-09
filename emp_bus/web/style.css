@@ -1,12 +1,13 @@
 /* 
-    UPDATE 0.0.2v
+    UPDATE 0.0.4v
     MOFIED VALUES FOR MAKE THE NUI
-    RESPONSIVE.
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap'); /* Não mexer nisso */
+
 *{
-    font-weight: bold;
-    font-family: sans-serif;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -29,40 +30,49 @@ body {
     overflow: hidden;
 }
 
-img {
-    position: absolute;
-    top: 4px;
-    left: 85px;
-    width: 32px;
-    height: 32px;
-}
-
 .title {
+    font-weight: 800;
     position: relative;
-    top: 10%;
+    top: 5%;
     font-size: 1vmax;
     display: flex;
     justify-content: center;
     color: #000000;
     min-width: 50%;
-    height: 10%;
-    border-bottom: 0.2vmax solid black;
+    height: 11%;
+    border-bottom: 0.1vmax solid;
+    border-image-slice: 1;
+    border-image-source:  linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 3%, rgba(0,0,0,0.6601015406162465) 50%, rgba(0,0,0,0) 97%, rgba(0,0,0,0) 100%);
 }
 
-
-
+.title i {
+    margin-top: 2px;
+    margin-right: 2px;
+}
 
 /* MIDDLE */
 
 .desc {
+    text-align: center;
     position: absolute;
-    top: 25%;
-    width: 17vw;
-    height: 8.5vh;
-    padding-bottom: 0.5vmax;
+    top: 14%;
+    width: 15vw;
+    height: 6vh;
+    padding-bottom: 5.5vmax;
     text-align: center;
     font-size: 0.85vmax;
-    border-bottom: 0.2vmax solid black;
+    border-bottom: 0.1vmax solid;
+    border-image-slice: 1;
+    border-image-source:  linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 3%, rgba(0,0,0,0.6601015406162465) 50%, rgba(0,0,0,0) 97%, rgba(0,0,0,0) 100%);
+}
+
+.desc i {
+    margin-right: 1px;
+}
+
+.font {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
 }
 
 /* BOTTOM */
@@ -77,7 +87,7 @@ img {
 
 .box button {
     position: relative;
-    top: 10%;
+    top: 20%;
     margin-top: 2%;
     border: none;
     width: 45%;
@@ -94,8 +104,14 @@ img {
     background: rgb(86, 211, 106);
 }
 
+#buttons i {
+    margin-right: 5px;
+}
+
 .botao:hover {
-    background: rgb(82, 255, 14);
+    background: rgb(36, 211, 66);
+    transform: translateY(-3px);
+    box-shadow: 0px 4px 10px -5px #32e04f, 0px 7px 15px -7px #000000;
     transition: 500ms;
 }
 
@@ -104,6 +120,8 @@ img {
 }
 
 .botao2:hover {
-    background: rgb(255, 14, 14);
+    background: rgb(248, 29, 29);
+    transform: translateY(-3px);
+    box-shadow: 0px 4px 10px -5px #e03232, 0px 7px 15px -7px #000000;
     transition: 500ms;
 }

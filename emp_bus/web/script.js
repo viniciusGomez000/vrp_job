@@ -23,12 +23,14 @@ $(document).ready(function() {
 
 
     $(".botao").click(function(){
+        $(".botao").css("outline", "none");
         $.post("http://emp_bus/botao")
         $(".botao").fadeOut(300);
         $(".botao2").fadeIn(300);
     })
 
     $(".botao2").click(function(){
+        $(".botao2").css("outline", "none");
         $.post("http://emp_bus/botao2")
         $(".botao2").fadeOut(300);
         $(".botao").fadeIn(300);
