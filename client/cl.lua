@@ -12,7 +12,7 @@ local selecionado = 1
 local servico = false
 local onNui = false
 local toggle = {
-    vec3(453.63, -600.62, 28.6),
+	vec3(453.63, -600.62, 28.6),
 }
 local locs = {
 	[1] = vec3(448.59, -587.93, 28.5),
@@ -60,11 +60,9 @@ Citizen.CreateThread(function()
     SetNuiFocus(false, false)
     while true do
         local idle = 1000
-	--Não existe necessidade de voce colocar a variavel coords dentro do for
-	--Isso é um loop sempre que ele executar o for ele ira fazer com a mesma coord, o que elimina a necessidade de ficar pegando a coordenada sem necessidade
         local coords = GetEntityCoords(PlayerPedId())	
         for k,v in pairs(toggle) do
-            local distance = #(coords - v) --Cria o vetor direto na tabela, fica mais pratico de usar
+            local distance = #(coords - v)
           
             if distance <= 3.0 then
 		idle = 5
@@ -89,7 +87,6 @@ function rota()
                 local coords = GetEntityCoords(ped)
                 local distance = #(coords - locs[selecionado])
                 if distance <= 10.0 then
-		    --DrawMarker aceita vec3 como coordenada
                     DrawMarker(21,locs[selecionado].x,locs[selecionado].y,locs[selecionado].z+0.20,0,0,0,0,180.0,130.0,2.0,2.0,1.0,247,217,99,100,1,0,0,1)
                     idle = 5
                     if distance <= 2.5 and IsControlJustPressed(0,38) then
