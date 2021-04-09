@@ -2,7 +2,11 @@
 
 `
    Plataforma: FiveM
+`
+`
    Framework: vRPeX
+`
+`
    Data de início do projeto: 08/04/21
 `
  
@@ -10,9 +14,17 @@
 
 `
    Vinicius Gomez
+`
+`
    Shawty
+`
+`
    Muamba
+`
+`
    guimilreu
+`
+`
    nyo
 `
 
