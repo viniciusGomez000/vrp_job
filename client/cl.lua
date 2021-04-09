@@ -12,10 +12,10 @@ local selecionado = 1
 local servico = false
 local onNui = false
 local toggle = {
-    { 453.63, -600.62, 28.6 }
+    vec3(453.63, -600.62, 28.6),
 }
 local locs = {
-	[1] = vec3( 448.59, -587.93, 28.5),
+	[1] = vec3(448.59, -587.93, 28.5),
 	[2] = vec3(441.57, -574.49, 28.5 ),
 }
 
@@ -65,11 +65,10 @@ Citizen.CreateThread(function()
         local coords = GetEntityCoords(PlayerPedId())	
         for k,v in pairs(toggle) do
             local distance = #(coords - v) --Cria o vetor direto na tabela, fica mais pratico de usar
-            local toggle = toggle[k]
-            
+          
             if distance <= 3.0 then
 		idle = 5
-                DrawText3D(toggle[1],toggle[2],toggle[3],"~w~Pressione ~r~[E] ~w~para abrir")
+                DrawText3D(v.x,v.y,v.z,"~w~Pressione ~r~[E] ~w~para abrir")
                 if distance <= 1.2 and IsControlJustPressed(0,38) then
                     ToogleActionNui()
                 end
@@ -88,7 +87,7 @@ function rota()
             if servico then
                 local ped = PlayerPedId()
                 local coords = GetEntityCoords(ped)
-                local distance = #(coords - vector3(locs[selecionado][1],locs[selecionado][2],locs[selecionado][3]))
+                local distance = #(coords - locs[selecionado])
                 if distance <= 10.0 then
 		    --DrawMarker aceita vec3 como coordenada
                     DrawMarker(21,locs[selecionado].x,locs[selecionado].y,locs[selecionado].z+0.20,0,0,0,0,180.0,130.0,2.0,2.0,1.0,247,217,99,100,1,0,0,1)
