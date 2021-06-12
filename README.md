@@ -10,11 +10,6 @@
 
 ```
    ・ Vinicius Gomez
-   ・ Shawty
-   ・ Muamba
-   ・ Guimilreu
-   ・ Nyo
-   ・ Guit
 ```
 
 # Empregos
